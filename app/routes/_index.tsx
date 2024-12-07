@@ -1,5 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
-import Footer from "./components/footer";
+import { Link } from "@remix-run/react";
 
 
 export const meta: MetaFunction = () => {
@@ -9,73 +9,57 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+
 export default function Index() {
   return (
-    <div className="w-full">
-      <div className="w-full">
-        <nav className=" h-24 flex justify-end bg-[#002847]">
+    <div className="w-full h-screen flex flex-col text-white">
+      {/* Barra superior */}
+      <nav className="h-24 flex justify-end bg-[#002847]">
+        <div className="flex items-center space-x-10">
           <div>
-            <div>
-              <img src="/imgs/image1.svg" alt="imagen login" width={240} />
-            </div>
+            <img src="/imgs/image1.svg" alt="imagen login" width={240} />
           </div>
-        </nav>
-        <div className="h-2 bg-[#FA4616]"></div>
-        <div className="flex mt-6">
-          <div className="w-3/6">
-            <div className="flex justify-center">
-              <div className="w-5/6">{/** titulo*/}
-                <h1 className="be-vietnam-pro-semibold text-6xl font-black text-center">Secretos Para Contar</h1>
-                <h2 className="text-center">Biblioteca Digital</h2>
-              </div>
-            </div>
-            <div className="flex justify-center ">{/** imagen*/}
-              <img src="/imgs/image2.svg" alt="imagen login" />
-            </div>
+        </div>
+      </nav>
+      <div className="h-2 bg-[#FA4616]"></div>
 
-          </div>
+      {/* Contenido principal */}
+      <div
+        className="relative flex-1 flex flex-col justify-center items-center"
+        style={{
+          backgroundImage: `url('/imgs/imagen3.svg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Overlay para opacidad */}
+        <div className="absolute inset-0 bg-black opacity-50"></div>
 
-          <div className="flex justify-center py-10 w-3/6"> {/* login */}
-            <div> {/* Contenedor formulario */}
-              <div className="space-y-6"> {/* Espaciado entre los elementos */}
-                <div className="flex flex-col">
-                  <label htmlFor="email" className="text-lg font-semibold mb-2">Correo</label>
-                  <input
-                    id="email"
-                    type="text"
-                    className="border p-2 rounded"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label htmlFor="password" className="text-lg font-semibold mb-2">Contraseña</label>
-                  <input
-                    id="password"
-                    type="password"
-                    className="border p-2 rounded"
-                  />
-                </div>
-                <div>
-                  <button className="w-full bg-[#FA4616] text-white py-2 rounded text-lg font-semibold">
-                    Ingresar
-                  </button>
-                </div>
-                <div className="text-center text-sm">
-                  <a href="#" className="text-gray-600">¿Haz olvidado tu contraseña?</a>
-                </div>
-              </div>
-              <div className="mt-6 text-center">
-                <button className="w-full border py-2 rounded text-lg font-semibold">
-                  Registrar
-                </button>
-              </div>
-            </div>
-          </div>
+        {/* Contenido sobre la imagen */}
+        <div className="relative z-10 text-center px-4">
+          {/* Título */}
+          <h1 className="text-6xl font-black mb-6">
+            Bienvenidos a la Biblioteca Digital de Secretos para Contar
+          </h1>
+          
+          {/* Párrafos alineados con el título */}
+          <p className="text-2xl max-w-2xl mx-auto">
+            Leer es un mágico viaje lleno de aventuras y sueños.
+          </p>
+          <p className="text-2xl max-w-2xl mx-auto mt-4">
+            ¡Aquí encontrarás historias que harán volar tu imaginación y te llenarán de alegría!
+          </p>
 
-
+          {/* Botón de redirección al Index */}
+          <Link to="/biblioteca">
+            <button className="mt-6 px-6 py-3 bg-[#FA4616] text-white text-lg font-bold rounded shadow-md hover:bg-[#d93d14]">
+              Ingresar
+            </button>
+          </Link>
         </div>
       </div>
-      <Footer></Footer>
     </div>
-
   );
-};
+  
+}
+
